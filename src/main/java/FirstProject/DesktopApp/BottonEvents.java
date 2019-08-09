@@ -3,19 +3,19 @@ package FirstProject.DesktopApp;
  * Sample Skeleton for 'MainFrame.fxml' Controller Class
  */
 
-import javafx.scene.control.Button;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import dao.ReadExcel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -76,9 +76,9 @@ public class BottonEvents {
 
 	@FXML
 	void mainPanelClick(ActionEvent event) throws IOException {
+		App.loading(rightPane, 0);
 		if (!isLogin)
 			return;
-		rightPane.getChildren().clear();
 		rightPane.getChildren().add((Node) FXMLLoader.load(getClass().getResource("../../fxml/MainPanel.fxml")));
 		currentPanel = rightPane;
 		mainPanelBtn.setFocusTraversable(true);
@@ -88,7 +88,7 @@ public class BottonEvents {
 	void loginAction(ActionEvent event) throws IOException {
 		if (loginId.getText().isEmpty() && password.getText().isEmpty())
 			System.out.println("Enter LoginId and Password");
-		else if (loginId.getText().contains("yash") && password.getText().contains("yash")) {
+		else if (ReadExcel.checkLogin(loginId.getText(), password.getText())) {
 			dashboardPane.setVisible(false);
 			isLogin = true;
 			mainPanelClick(event);

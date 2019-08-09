@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.gluonhq.charm.glisten.control.ProgressIndicator?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane fx:id="loadingPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="411.0" prefWidth="382.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FirstProject.DesktopApp.controller.LoadingController">
+   <children>
+      <ProgressIndicator fx:id="loading" layoutX="137.0" layoutY="152.0" prefHeight="244.0" prefWidth="235.0" progress="0.64" radius="50.0" styleClass="loading" stylesheets="@../css/style.css" />
+   </children>
+</Pane>
